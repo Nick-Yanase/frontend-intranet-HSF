@@ -1,5 +1,6 @@
 'use client'
-import Header from "@/components/Header";
+import Footer from "@/components/template/Footer";
+import Header from "@/components/template/Header";
 
 import { useEffect, useState } from "react";
 
@@ -22,7 +23,7 @@ export default function Home() {
   }, []);
 
   const fetchConvenios = async () => {
-    const res = await fetch(`http://172.16.12.11/intranet-backend/convenio/index.php`);
+    const res = await fetch(`http://172.16.12.15/intranet-backend-teste/convenio/index.php`);
     const data = await res.json();
     setConvenios(data);
   };
@@ -30,7 +31,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="w-full flex items-center justify-center gap-4">
+      <main className="w-full h-[600px] flex items-center justify-center gap-4">
         {
           convenios.map((convenio: Convenio) => (
             <div key={convenio.id} className="w-72 h-fit p-6 rounded-2xl shadow-lg flex flex-col justify-between bg-zinc-900 cursor-pointer gap-2">
@@ -41,6 +42,7 @@ export default function Home() {
           ))
         }
       </main>
+      <Footer />
     </>
     
   );
